@@ -2,13 +2,13 @@ package model;
 
 import java.util.ArrayList;
 
-public class Restaurar {
+public class Reparar {
 
-	public Restaurar(){
+	public Reparar(){
 		
 	}
 	
-	public Restaurar(int idReparacao, Carro carro, ArrayList<Peca> pecasTiradas, ArrayList<Peca> pecasMetidas,
+	public Reparar(int idReparacao, Carro carro, ArrayList<Peca> pecasTiradas, ArrayList<Peca> pecasMetidas,
 			String dataInicio, String dataFinal, double custoMaoObra) {
 		super();
 		this.idReparacao = idReparacao;

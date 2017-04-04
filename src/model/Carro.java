@@ -2,21 +2,25 @@ package model;
 
 public class Carro {
 
+	
+
 	public Carro(){
 		
 	}
 	
-	public Carro(int idCarro, String marcaCarro, String modeloCarro, String dataPrimRegisto) {
+	public Carro(int idCarro, String marcaCarro, String modeloCarro,boolean estadoCarro, String dataPrimRegisto) {
 		super();
 		this.idCarro = idCarro;
 		this.marcaCarro = marcaCarro;
 		this.modeloCarro = modeloCarro;
+		this.setEstadoCarro(estadoCarro);
 		this.dataPrimRegisto = dataPrimRegisto;
 	}
 
 	private int idCarro;
 	private String marcaCarro;
 	private String modeloCarro;
+	private boolean estadoCarro;
 	private String dataPrimRegisto;
 	
 	public int getIdCarro() {
@@ -49,6 +53,14 @@ public class Carro {
 
 	public void setDataPrimRegisto(String dataPrimRegisto) {
 		this.dataPrimRegisto = dataPrimRegisto;
+	}
+
+	public boolean isEstadoCarro() {
+		return estadoCarro;
+	}
+
+	public void setEstadoCarro(boolean estadoCarro) {
+		this.estadoCarro = estadoCarro;
 	}
 	
 	

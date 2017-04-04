@@ -15,9 +15,9 @@ public class CCarro {
 		bd = new MockupData();
 	}
 	
-	public void addCarro(String marcaCarro, String modeloCarro, String dataPrimRegisto){
+	public void addCarro(String marcaCarro, String modeloCarro,boolean estadoCarro, String dataPrimRegisto){
 		
-		Carro c = new Carro(bd.carro.size(), marcaCarro, modeloCarro, dataPrimRegisto);
+		Carro c = new Carro(bd.carro.size(), marcaCarro, modeloCarro,estadoCarro, dataPrimRegisto);
 		bd.carro.add(c);
 		
 	}
@@ -35,11 +35,20 @@ public class CCarro {
 		return c;
 	}
 	
-	public void listarTodosCarros(){
+	public void listarCarrosAtivos(){
+		int cont=0;
 		if(bd.carro.size()!= 0){
-			for(Carro c: bd.carro){
-				System.out.println("MARCA: "+bd.carro.get(0).getMarcaCarro()+"\nMODELO: "+bd.carro.get(0).getModeloCarro()+"\nDATA DE REGISTO: "+bd.carro.get(0).getDataPrimRegisto());
-			}
+				for(int i=0; i<bd.carro.size();i++){
+					if(bd.carro.get(i).isEstadoCarro()==true){
+						System.out.println("MARCA: "+bd.carro.get(i).getMarcaCarro()+"\nMODELO: "+
+							bd.carro.get(i).getModeloCarro()+"\nDATA DE REGISTO: "+bd.carro.get(i).getDataPrimRegisto());
+					}else{
+						cont++;
+					}
+				}
+				if(cont==bd.carro.size()){
+					System.out.println("NAO EXISTEM CARROS DISPONIVEIS");
+				}
 		}else{
 			System.out.println("NÃO EXIXTEM CARROS REGISTADOS...");
 		}
