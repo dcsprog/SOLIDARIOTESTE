@@ -8,6 +8,7 @@ import controller.CReparar;
 import misc.MockupData;
 import model.Carro;
 import model.Peca;
+import model.Reparar;
 
 public class Interface {
 
@@ -68,9 +69,12 @@ public class Interface {
 		Carro c=ccarro.listarCarroId(idCar);
 		System.out.println("MARCA: "+c.getMarcaCarro()+"\nMODELO: "+c.getModeloCarro()+"\nDATA DE REGISTO: "+c.getDataPrimRegisto());
 	}
-	public void regRepararacao(){
+	
+	public void regRepararacao(int idCar){
+		idCar-=1;
+		Carro c =ccarro.listarCarroId(idCar);
 		ArrayList<Peca> tiradas = null;
-		ArrayList<Peca> repostas;
+		ArrayList<Peca> repostas = null;
 		System.out.println("QUANTAS PECAS FORAM TIRADAS?");
 		int quant = n.nextInt();
 		for(int i=0; i<quant;i++){
@@ -78,13 +82,32 @@ public class Interface {
 			String nomePeca = n.nextLine();
 			System.out.println("INTRODUZA A DESCRICAO DA PECA: ");
 			String descricaoPeca = n.nextLine();
-			System.out.println("INTRODUZA O PRECO DA PECA: ");
-			double precoPeca = n.nextDouble();
+			//System.out.println("INTRODUZA O PRECO DA PECA: ");
+			double precoPeca =0;
 			Peca e = new Peca(tiradas.size(),nomePeca,descricaoPeca,precoPeca);
 			tiradas.add(e);
 		}
+		for(int i=0; i<quant;i++){
+			System.out.println("INSIRA O ID DA PECA RETIRADA: ");
+			int id = n.nextInt();
+			if(id==tiradas.get(i).getIdPeca()){
+				System.out.println("NOME DA PECA: "+tiradas.get(i).getNomePeca());
+				System.out.println("DESCRICAO DA PECA: "+tiradas.get(i).getDescricaoPeca());
+				System.out.println("INTRODUZA O PRECO DA PECA: ");
+				double precoPeca = n.nextDouble();
+				Peca r = new Peca(repostas.size(),tiradas.get(i).getNomePeca(),tiradas.get(i).getDescricaoPeca(),precoPeca);
+				repostas.add(r);
+			}
+		}
+		System.out.println("INTRODUZA A DATA DE INICIO DA REPARACAO: ");
+		String dataI = n.nextLine();
+		System.out.println("INTRODUZA A DATA FINAL DA REPARACAO: ");
+		String dataF = n.nextLine();
+		System.out.println("INTRODUZA O VALOR DA MAO DE OBRA DA REPARACAO: ");
+		double valor = n.nextDouble();
 		
-		
+		Reparar r = new Reparar(bd.reparar.size(),c,tiradas,repostas,dataI,dataF,valor);
+		bd.reparar.add(r);
 	}
 	
 	
