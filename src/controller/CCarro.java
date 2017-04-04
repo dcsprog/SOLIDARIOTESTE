@@ -36,8 +36,12 @@ public class CCarro {
 	}
 	
 	public void listarTodosCarros(){
-		for(Carro c: bd.carro){
-			System.out.println("MARCA: "+bd.carro.get(0).getMarcaCarro()+"\nMODELO: "+bd.carro.get(0).getModeloCarro());
+		if(bd.carro.size()!= 0){
+			for(Carro c: bd.carro){
+				System.out.println("MARCA: "+bd.carro.get(0).getMarcaCarro()+"\nMODELO: "+bd.carro.get(0).getModeloCarro()+"\nDATA DE REGISTO: "+bd.carro.get(0).getDataPrimRegisto());
+			}
+		}else{
+			System.out.println("NÃO EXIXTEM CARROS REGISTADOS...");
 		}
 	
 	}

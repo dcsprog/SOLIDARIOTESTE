@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import controller.CCarro;
 import misc.MockupData;
+import model.Carro;
 
 public class Interface {
 
@@ -27,7 +28,7 @@ public class Interface {
 	public void menuP(){
 		
 		System.out.println("     		MENU PRINCIPAL     ");
-		System.out.println("\n   1 - VERIFICAR CARROS ATIVOS ");
+		System.out.println("\n    1 - GESTAO CARROS ");
 		System.out.println("    2 - LISTAR REPARACOES  ");
 		System.out.println("    3 - SAIR");
 		
@@ -41,5 +42,15 @@ public class Interface {
 		System.out.println("INSIRA A DATA DO PRIMEIRO REGISTO DO CARRO: ");
 		String data = n.nextLine();
 		ccarro.addCarro(marca, modelo, data);
+	}
+	
+	public void lCarro(){
+		ccarro.listarTodosCarros();
+	}
+	public void lCarroId(){
+		System.out.println("INTRODUZA O ID QUE DESEJA PROCURAR: ");
+		int idCar = n.nextInt();
+		Carro c=ccarro.listarCarroId(idCar);
+		System.out.println("MARCA: "+c.getMarcaCarro()+"\nMODELO: "+c.getModeloCarro()+"\nDATA DE REGISTO: "+c.getDataPrimRegisto());
 	}
 }

@@ -24,15 +24,27 @@ public class App {
 			opc = n.nextInt();
 			switch(opc){
 			case 1:
-				i.menuCarro();
-				int opc2 = n.nextInt();
-				switch(opc2){
-				case 1:
-					i.regCarro();
-				}			
-				break;
-			case 2:
-				///i.///listCli();
+				do{
+					
+					i.menuCarro();
+					int opc2 = n.nextInt();
+					switch(opc2){
+					case 1:
+						i.regCarro();
+						break;
+					case 2: 
+						i.lCarro();
+						break;
+					case 3:
+						i.lCarroId();
+						break;
+					case 4:
+						verf2=false;
+						break;
+					default:
+						System.out.println("OPCAO INVALIDA...");
+					}
+				}while(verf2);
 				break;
 			case 3:
 				verf=false;
